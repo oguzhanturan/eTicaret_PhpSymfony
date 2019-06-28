@@ -1,0 +1,134 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Orders{% endblock %}
+
+{% block content %}
+    <div class="product-big-title-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="product-bit-title text-center">
+                        <h2>Sipariş Özeti </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12" style="height: 25px"></div>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Sipariş Özeti
+                    </div>
+                    <div class="panel-body">
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ order.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Userid</th>
+                                <td>{{ order.userid }}</td>
+                            </tr>
+                            <tr>
+                                <th>Amount</th>
+                                <td>{{ order.amount }}</td>
+                            </tr>
+                            <tr>
+                                <th>Name</th>
+                                <td>{{ order.name }}</td>
+                            </tr>
+                            <tr>
+                                <th>Adress</th>
+                                <td>{{ order.adress }}</td>
+                            </tr>
+                            <tr>
+                                <th>City</th>
+                                <td>{{ order.city }}</td>
+                            </tr>
+                            <tr>
+                                <th>Phone</th>
+                                <td>{{ order.phone }}</td>
+                            </tr>
+                            <tr>
+                                <th>Shipinfo</th>
+                                <td>{{ order.shipinfo }}</td>
+                            </tr>
+                            <tr>
+                                <th>Status</th>
+                                <td>{{ order.status }}</td>
+                            </tr>
+                            <tr>
+                                <th>Note</th>
+                                <td>{{ order.note }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Sepet Detayı
+                    </div>
+                    <div class="panel-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Sipariş ID</th>
+                                <th>Product Name</th>
+                                <th>Satış Fiyatı</th>
+                                <th>Adet</th>
+                                <th>Toplam</th>
+                                <th>Durum</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for orders in orderdetail %}
+                                {% if orders.status == 'Ordered' %}
+                                    <tr class="success">
+                                        <td>{{ orders.orderid }}</td>
+                                        <td>{{ orders.name }}</td>
+                                        <td>{{ orders.price }}</td>
+                                        <td>{{ orders.quantity }}</td>
+                                        <td>{{ orders.quantity * orders.price }} TL</td>
+                                        <td>@{{ orders.status }}</td>
+                                    </tr>
+                                {% elseif order.status == 'Canceled' %}
+                                    <tr class="warning">
+                                        <td>{{ orders.orderid }}</td>
+                                        <td>{{ orders.name }}</td>
+                                        <td>{{ orders.price }}</td>
+                                        <td>{{ orders.quantity }}</td>
+                                        <td>{{ orders.quantity * orders.price }} TL</td>
+                                        <td>@{{ orders.status }}</td>
+                                    </tr>
+                                    {% else %}
+                                        <tr class="warning">
+                                            <td>{{ orders.orderid }}</td>
+                                            <td>{{ orders.name }}</td>
+                                            <td>{{ orders.price }}</td>
+                                            <td>{{ orders.quantity }}</td>
+                                            <td>{{ orders.quantity * orders.price }} TL</td>
+                                            <td>@{{ orders.status }}</td>
+                                        </tr>
+                                {% endif %}
+
+                            {% endfor %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

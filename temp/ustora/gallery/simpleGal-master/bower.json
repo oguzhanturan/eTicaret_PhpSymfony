@@ -1,0 +1,27 @@
+{
+  "name": "simpleGal",
+  "version": "0.0.1",
+  "homepage": "https://github.com/steverydz/simpleGal",
+  "authors": [
+    "Steve Rydz <steverydz@gmail.com>"
+  ],
+  "description": "A simple image gallery plugin",
+  "main": "src/jquery.simpleGal.js",
+  "keywords": [
+    "jquery",
+    "plugin",
+    "jquery-plugin",
+    "gallery",
+    "image",
+    "photo"
+  ],
+  "licenses": "MIT",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

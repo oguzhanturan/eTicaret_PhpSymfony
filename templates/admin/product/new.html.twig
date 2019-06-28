@@ -1,0 +1,10 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Yeni Ürün{% endblock %}
+
+{% block content %}
+
+    {{ include('admin/product/_form.html.twig') }}
+
+    <a href="{{ path('admin_product_index') }}"><button type="button" class="btn btn-success">Ürün Listesi</button></a>
+{% endblock %}

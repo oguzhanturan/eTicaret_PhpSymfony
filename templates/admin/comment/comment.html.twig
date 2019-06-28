@@ -1,0 +1,51 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}product index{% endblock %}
+
+{% block content %}
+    <h1 class="page-subhead-line">
+        <a href="{{ path('admin_product_new') }}">
+        </a></h1>
+
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>User ID</th>
+            <th>User Name</th>
+            <th>Product ID</th>
+            <th>Comment</th>
+            <th>Status</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for comment in mycomments %}
+            <tr>
+                <td>{{ comment.userid }}</td>
+                <td>{{ comment.username }}</td>
+                <td>{{ comment.productid }}</td>
+                <td>{{ comment.comment }}</td>
+                <td>{{ comment.status }}</td>
+                <td>
+                    <div class="btn-group">
+                        <button class="btn btn-primary">Action</button>
+                        <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span
+                                    class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ path('admin_comment_edit', {'id': comment.id}) }}">Yorumu Düzenle</a></li>
+                        </ul>
+                    </div>
+
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="17">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,34 @@
+{
+  "name": "simpleGal",
+  "title": "simpleGal",
+  "description": "A simple image gallery plugin",
+  "keywords": [
+    "gallery",
+    "image",
+    "photo"
+  ],
+  "version": "0.0.1",
+  "author": {
+    "name": "Steve Rydz",
+    "url": "http://steverydz.com"
+  },
+  "maintainers": [
+    {
+      "name": "Steve Rydz",
+      "url": "http://steverydz.com"
+    }
+  ],
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://steverydz.mit-license.org/"
+    }
+  ],
+  "bugs": "https://github.com/steverydz/simpleGal/issues",
+  "homepage": "https://github.com/steverydz/simpleGal",
+  "docs": "https://github.com/steverydz/simpleGal#readme",
+  "download": "https://github.com/steverydz/simpleGal/archive/master.zip",
+  "dependencies": {
+    "jquery": ">=1.4"
+  }
+}

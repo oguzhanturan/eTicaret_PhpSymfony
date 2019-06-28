@@ -1,0 +1,10 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Yeni Kullanıcı{% endblock %}
+
+{% block content %}
+
+    {{ include('admin/category/_form.html.twig') }}
+
+    <a href="{{ path('admin_category_index') }}"><button type="button" class="btn btn-success">Kategori Listesi</button></a>
+{% endblock %}

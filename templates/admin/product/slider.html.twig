@@ -1,0 +1,59 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}product index{% endblock %}
+
+{% block content %}
+    <h1 class="page-subhead-line">
+        <a href="{{ path('admin_product_new') }}">
+            <button type="button" class="btn btn-success">Ekle</button>
+        </a></h1>
+
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Image</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in slider %}
+            <tr>
+                <td>{{ product.title }}</td>
+                <td>{% if product.image == null %}
+                        <a class="btn btn-info "
+                           href=" javascript:openWin('{{ path('admin_product_iedit', {'id': product.id}) }}','','toolbar=no,scrollbars=no,resizable=no,top=200,left=500,width=400,height=180')">
+                            Resim Yükle
+                        </a>
+                    {% else %}
+                        <a href=" javascript:openWin('{{ path('admin_product_iedit', {'id': product.id}) }}','','toolbar=no,scrollbars=no,resizable=no,top=200,left=500,width=400,height=180')">
+                            <img src="{{ asset('admin/uploads') }}/images/{{ product.image }}" width="80" height="50"></a>
+                    {% endif %}
+                </td>
+
+                <td>
+                    <div class="btn-group">
+                        <button class="btn btn-primary">Action</button>
+                        <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span
+                                    class="caret"></span></button>
+                        <ul class="dropdown-menu">
+
+                            <li><a href="{{ path('admin_product_show', {'id': product.id}) }}">Slider Göster</a></li>
+                            <li><a href="{{ path('admin_product_edit', {'id': product.id}) }}">Slider Düzenle</a></li>
+
+                        </ul>
+                    </div>
+
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="17">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,134 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Shopcarts index{% endblock %}
+
+{% block content %}
+
+    <div class="product-big-title-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="product-bit-title text-center">
+                        <h2>Alışveriş Sepetim</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End Page title area -->
+
+
+    <div class="single-product-area">
+        <div class="zigzag-bottom"></div>
+        <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                    <div class="product-content-right">
+                        <div class="woocommerce">
+                            <form method="post" action="{{ path('orders_new') }}">
+                                {{ include('messages.html.twig') }}
+                                <table cellspacing="0" class="shop_table cart">
+                                    <thead>
+                                    <tr>
+                                    <tr>
+
+                                    </tr>
+                                        <th class="product-remove">&nbsp;</th>
+                                        <th class="product-name">Ürün</th>
+                                        <th class="product-price">Fiyat</th>
+                                        <th class="product-quantity">Adet</th>
+                                        <th class="product-subtotal">Tutar</th>
+                                    </tr>
+
+
+                                    <input type="hidden" value="değişken tanımlama----------------********---------------">
+
+
+                                    </thead>
+                                    {% set foo = 0 %}
+                                    {% set i = 0 %}
+                                    {% for shopcart in shopcarts%}
+                                    <tbody>
+                                        {% set foo = foo + shopcart.sprice %}
+
+                                    <tr class="cart_item">
+
+                                        <td class="product-remove">
+                                            <a title="Remove this item" class="remove" href="{{ path('shopcarts_delete', {'id': shopcart.id}) }}"onclick="return confirm('Silinecek Emin Misiniz?')">×</a>
+                                        </td>
+
+
+
+                                        <td class="product-name">
+                                            <a href="single-product.html">{{ shopcart.title }}</a>
+                                        </td>
+
+                                        <td class="product-price">
+                                            <span class="amount">{{ shopcart.sprice }} TL</span>
+                                        </td>
+
+                                        <td class="product-quantity">
+                                            <div class="quantity buttons_added">
+                                                <input type="button" class="minus" value="-">
+                                                <input type="number" size="4" class="input-text qty text" title="Qty" value="{{ shopcart.quantity }}" min="0" step="1">
+                                                <input type="button" class="plus" value="+">
+                                            </div>
+                                        </td>
+
+                                        <td class="product-subtotal">
+                                            <span class="amount">{{ shopcart.sprice * shopcart.quantity}} TL</span>
+                                        </td>
+                                    </tr>
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="5">Oopss... Sepetinizde ürün bulunamadı...</td>
+                                        </tr>
+                                        {% set i = i +1 %}
+                                    {% endfor %}
+
+                                    <tr>
+                                        <td class="actions" colspan="6">
+
+                                            <input type="submit" value="Alışverisi Tamamla" name="proceed" class="checkout-button button alt wc-forward">
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+
+                            <div class="cart-collaterals">
+
+
+                                <div class="cart_totals ">
+                                    <h2>Sepet Toplamı</h2>
+
+                                    <table cellspacing="0">
+                                        <tbody>
+                                        <tr class="cart-subtotal">
+                                            <th>Sepet Tutarı</th>
+                                            <td><span class="amount">{{ total }} TL</span></td>
+                                        </tr>
+
+                                        <tr class="shipping">
+                                            <th>Kargo Ücreti</th>
+                                            <td>Ücretsiz Kargo</td>
+                                        </tr>
+
+                                        <tr class="order-total">
+                                            <th>Toplam Tutar</th>
+                                            <td><strong><span class="amount">{{ total}} TL</span></strong> </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="{{ path('shopcarts_new') }}">Create new</a>
+{% endblock %}

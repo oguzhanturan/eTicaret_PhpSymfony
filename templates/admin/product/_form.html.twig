@@ -1,0 +1,112 @@
+<SCRIPT language="JavaScript" type="text/javascript">
+    function openWin(windowUrl,windowName,windowFeatures) {
+        window.open(windowUrl,windowName,windowFeatures);
+
+    }
+</SCRIPT>
+<div class="panel panel-info">
+    <div class="panel-heading">
+        Ürün Bilgileri
+    </div>
+    <div class="panel-body">
+        <form role="form" method="POST">
+
+            <div style="float: right ; width: 75%;">
+
+                <div class="form-group">
+                    <label>Ürün Başlığı</label>
+                    <input type="text" name="product[title]" class="form-control"  value="{{ product.title}}">
+                </div>
+                <div class="form-group">
+                    <label>Anahtar Kelimeler</label>
+                    <input type="text" name="product[keywords]" class="form-control"  value="{{ product.keywords }}">
+                </div>
+
+                <div class="form-group">
+                    <label>Ürün Tanımı</label>
+                    <input type="text" name="product[description]" class="form-control"  value="{{ product.description }}">
+                </div>
+                <div class="form-group">
+                    <label>Type</label>
+                    <input type="text" name="product[type]" class="form-control" value="{{ product.type }}">
+                </div>
+                <div class="form-group">
+
+                    <input type="hidden" name="product[publisher_id]" class="form-control" value="{{ product.publisherId }}">
+                </div>
+                <div class="form-group">
+                    <label>Üretim Yılı</label>
+                    <input  type="text" name="product[years]" class="form-control" value="{{ product.years }}">
+                </div>
+                <div class="form-group">
+                    <label>Ürün Adedi</label>
+                    <input  type="text" name="product[amount]" class="form-control" value="{{ product.amount }}">
+                </div>
+                <div class="form-group">
+                    <label>Asıl Fiyat</label>
+                    <input  type="text" name="product[price]" class="form-control" value="{{ product.price }}">
+                </div>
+                <div class="form-group">
+                    <label>Satış Fiyatı</label>
+                    <input  type="text" name="product[sprice]" class="form-control" value="{{ product.sprice }}">
+                </div>
+                <div class="form-group">
+                    <label>Min. Miktar</label>
+                    <input  type="text" name="product[minamount]" class="form-control" value="{{ product.minamount }}">
+                </div>
+                <div class="form-group">
+                    <label>Ürün Detayı</label>
+                    <input  type="text" name="product[detail]" class="form-control" value="{{ product.detail}}">
+                </div>
+                <div class="form-group">
+                    <input  type="hidden" name="product[producer_id]" class="form-control" value="{{ product.producerId }}">
+                </div>
+                <div class="form-group">
+                    <input  type="hidden"  name="product[image]" class="form-control" value="{{ product.image }}">
+                </div>
+                <div class="form-group">
+                    <label>Kategori</label>
+                    <select name="product[category_id]" id="status" class="form-control" >
+                        {% for categorylist in catlistesi %}
+                            {% if categorylist.parentid == '0' %}
+                        <option readonly style="background-color: grey; color: white;" value="{{  categorylist.id}}">{{  categorylist.title | join}}</option>
+                            {% else %}
+                        <option value="{{  categorylist.id}}">{{  categorylist.title | join}}</option>
+                            {% endif %}
+
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Ürün Durumu</label>
+                    <select name="product[status]" id="status" class="form-control" >
+                        <option value="{{ product.status }}">{{ product.status }}</option>
+                        <option value="true">true</option>
+                        <option value="false">false</option>
+                        <option value="slider">slider</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-info">  Kaydet</button>
+              <a href="{{ path('admin_product_index') }}"><button class="btn btn-danger"><i class="glyphicon glyphicon-backward"></i>  Üye Listesi</button></a>
+            </div>
+
+            <div style="float: left ;width: 25%;">
+                <div class="fileupload fileupload-new" data-provides="fileupload"><input type="hidden">
+
+                    {% if product.image == null %}
+                    <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;"><img src="{{ asset('admin/assets') }}/img/demoUpload.jpg" alt=""></div>
+                    <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 10px;"></div>
+                    {% else %}
+                    <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 200px; max-height: 150px; line-height: 10px;"></div>
+                    <div class="fileupload-new thumbnail" style="width: 200px; height: 150px;"><img src="{{ asset('admin/uploads') }}/images/{{ product.image }}" alt=""></div>
+                    {% endif %}
+
+
+
+
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Setting index{% endblock %}
+
+{% block content %}
+
+    <h1 class="page-subhead-line"> Web Site Genel Ayarları </h1>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Company</th>
+                <th>Adress</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for setting in settings %}
+            <tr>
+                <td>{{ setting.title }}</td>
+                <td>{{ setting.company }}</td>
+                <td>{{ setting.adress }}</td>
+                <td>{{ setting.phone }}</td>
+                <td>{{ setting.email }}</td>
+                <td>
+                    <div class="btn-group">
+                        <button class="btn btn-primary">Action</button>
+                        <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span
+                                    class="caret"></span></button>
+                        <ul class="dropdown-menu">
+
+                            <li><a href="{{ path('admin_setting_edit', {'id': setting.id}) }}">Ayarları Düzenle</a></li>
+
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="15">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

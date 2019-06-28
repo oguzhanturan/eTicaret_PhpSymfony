@@ -1,0 +1,50 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Product{% endblock %}
+
+{% block content %}
+    <h1>Comment</h1>
+    <div>
+        {{ include('messages.html.twig') }}
+        <form method="post">
+        <table class="table">
+            <tbody>
+
+            <tr>
+                <th>User ID</th>
+                <td><input  type="text" name="comments[userid]" value="{{  comment.userid }}"></td>
+            </tr>
+            <tr>
+                <th>User Name</th>
+                <td><input  type="text" name="comments[username]" value="{{  comment.username }}"></td>
+            </tr>
+            <tr>
+                <th>Product ID</th>
+                <td><input  type="text" name="comments[productid]" value="{{  comment.productid }}"></td>
+            </tr>
+            <tr>
+                <th>Comment</th>
+                <td><input type="text" name="comments[comment]" value="{{  comment.comment }}"></td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>
+                <select name="comments[status]">
+                    <option value="{{ comment.status }}">{{ comment.status }}</option>
+                    <option value="true">True</option>
+                    <option value="false">False</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+                <td><input type="submit" class="btn btn-primary" value="Yorumu Düzenle">
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+        </form>
+    </div>
+
+
+{% endblock %}

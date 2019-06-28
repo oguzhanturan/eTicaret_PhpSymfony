@@ -1,0 +1,135 @@
+
+
+<SCRIPT language="JavaScript" type="text/javascript">
+    function openWin(windowUrl, windowName, windowFeatures) {
+        window.open(windowUrl, windowName, windowFeatures);
+
+    }
+</SCRIPT>
+<div class="panel panel-info">
+    <div class="panel-heading">
+        AYARLAR
+    </div>
+    <div class="panel-body">
+        <form role="form" method="POST">
+            <div class="col-md-12 col-sm-12">
+
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#home" data-toggle="tab">Genel Bilgiler</a>
+                            </li>
+                            <li class=""><a href="#profile" data-toggle="tab">Hakkımızda</a>
+                            </li>
+                            <li class=""><a href="#messages" data-toggle="tab">Email Server</a>
+                            </li>
+                            <li class=""><a href="#settings" data-toggle="tab">İletişim</a>
+                            </li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div class="tab-pane fade active in" id="home">
+                                <h4>Genel Bilgiler</h4>
+
+
+                                <div class="form-group">
+                                    <label>Enter Title</label>
+                                    <input type="text" name="setting[title]" class="form-control"
+                                           value="{{ setting.title }}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Enter keyword</label>
+                                    <input type="text" name="setting[keyword]" class="form-control"
+                                           value="{{ setting.keyword }}">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Enter description</label>
+                                    <input type="text" name="setting[description]" class="form-control"
+                                           value="{{ setting.description }}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Enter company</label>
+                                    <input type="text" name="setting[company]" class="form-control"
+                                           value="{{ setting.company }}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Enter adress</label>
+                                    <input type="text" name="setting[adress]" class="form-control"
+                                           value="{{ setting.adress }}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Enter phone</label>
+                                    <input type="text" name="setting[phone]" class="form-control"
+                                           value="{{ setting.phone }}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Enter email</label>
+                                    <input type="text" name="setting[email]" class="form-control"
+                                           value="{{ setting.email }}">
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="profile">
+                                <h4>Hakkımızda</h4>
+                                <div class="form-group">
+                                    <textarea type="textarea" name="setting[aboutus]" id="aboutus" class="form-control" >{{ setting.aboutus }}</textarea>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="messages">
+                                <h4>Email Server</h4>
+                                <div class="form-group">
+                                    <label>Enter smtpserver</label>
+                                    <input type="text" name="setting[smtpserver]" class="form-control"
+                                           value="{{ setting.smtpserver }}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Enter smtpmail</label>
+                                    <input type="text" name="setting[smtpmail]" class="form-control"
+                                           value="{{ setting.smtpmail }}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Enter smtppasword</label>
+                                    <input type="text" name="setting[smtppasw]" class="form-control"
+                                           value="{{ setting.smtppasw }}">
+                                </div>
+                                <div class="form-group">
+                                    <label>Enter smtpport</label>
+                                    <input type="text" name="setting[smtpport]" class="form-control"
+                                           value="{{ setting.smtpport }}">
+                                </div>
+
+                            </div>
+                            <div class="tab-pane fade" id="settings">
+                                <h4>İletişim</h4>
+                                <div class="form-group">
+                                    <textarea type="text" name="setting[contact]" id="contact" class="form-control">{{ setting.contact }}</textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                            <button type="submit" class="btn btn-info"> Kaydet</button>
+                            <a href="{{ path('admin_setting_index') }}">
+                            </a>
+
+                    </div>
+
+
+
+
+        </form>
+    </div>
+</div>
+</div>
+</div>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#aboutus' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>
+<script>
+    ClassicEditor
+        .create( document.querySelector( '#contact' ) )
+        .catch( error => {
+            console.error( error );
+        } );
+</script>

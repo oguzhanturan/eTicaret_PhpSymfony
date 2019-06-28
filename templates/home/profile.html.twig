@@ -1,0 +1,303 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Profilim{% endblock %}
+{% block content %}
+    <div class="product-big-title-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="product-bit-title text-center">
+                        <h2>Profilim </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12" style="height: 25px"></div>
+
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Profilim
+                    </div>
+                    <div class="panel-body">
+
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#home" data-toggle="tab">Bilgilerim</a>
+                            </li>
+                            <li class=""><a href="#profile" data-toggle="tab">Düzenle</a>
+                            </li>
+                            <li class=""><a href="#messages" data-toggle="tab">Siparişlerim</a>
+                            </li>
+                            <li class=""><a href="#settings" data-toggle="tab">Yorumlarım</a>
+                            </li>
+                        </ul>
+                        <br>
+                        <div class="tab-content">
+                            <div class="tab-pane fade active in" id="home">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        Kişisel Bilgiler
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-bordered table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th>Email</th>
+                                                    <th>{{ app.user.email }}</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>Ad Soyad</td>
+                                                    <td>{{ app.user.name }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Üyelik Tipi</td>
+                                                    <td>{{ app.user.roles|join }}</td>
+
+                                                    <!-- join arrayi alabilmek için roles array -->
+                                                </tr>
+                                                <tr>
+                                                    <td>Adres</td>
+                                                    <td>{{ app.user.adress }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Şehir</td>
+                                                    <td>{{ app.user.city }} </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Telefon</td>
+                                                    <td>{{ app.user.phone }}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="profile">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        Kişisel Bilgiler
+                                    </div>
+                                    <div class="panel-body">
+                                        <div class="table-responsive">
+                                            <form method="POST" action="{{ path('editusernow') }}" name="user">
+                                                <table class="table table-striped table-bordered table-hover">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>Email</th>
+                                                        <th><input type="text" name="email" value="{{ app.user.email }}"
+                                                                   disabled></th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td>Ad Soyad</td>
+                                                        <th><input type="text" name="name" value="{{ app.user.name }}">
+                                                        </th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Adres</td>
+                                                        <th><input type="text" name="adress"
+                                                                   value="{{ app.user.adress }}"></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Password</td>
+                                                        <th><input type="password" name="password"
+                                                                   value="{{ app.user.password }}"></th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Şehir</td>
+                                                        <th>
+                                                            <select name="city" style="width:150px">
+                                                            <option value="{{ app.user.city }}">{{ app.user.city }}</option>
+                                                            <option value="İstanbul">İstanbul</option>
+                                                            <option value="Ankara">Ankara</option>
+                                                            <option value="İzmir">İzmir</option>
+                                                            <option value="Adana">Adana</option>
+                                                            <option value="Adıyaman">Adıyaman</option>
+                                                            <option value="Afyonkarahisar">Afyonkarahisar</option>
+                                                            <option value="Ağrı">Ağrı</option>
+                                                            <option value="Aksaray">Aksaray</option>
+                                                            <option value="Amasya">Amasya</option>
+                                                            <option value="Antalya">Antalya</option>
+                                                            <option value="Ardahan">Ardahan</option>
+                                                            <option value="Artvin">Artvin</option>
+                                                            <option value="Aydın">Aydın</option>
+                                                            <option value="Balıkesir">Balıkesir</option>
+                                                            <option value="Bartın">Bartın</option>
+                                                            <option value="Batman">Batman</option>
+                                                            <option value="Bayburt">Bayburt</option>
+                                                            <option value="Bilecik">Bilecik</option>
+                                                            <option value="Bingöl">Bingöl</option>
+                                                            <option value="Bitlis">Bitlis</option>
+                                                            <option value="Bolu">Bolu</option>
+                                                            <option value="Burdur">Burdur</option>
+                                                            <option value="Bursa">Bursa</option>
+                                                            <option value="Çanakkale">Çanakkale</option>
+                                                            <option value="Çankırı">Çankırı</option>
+                                                            <option value="Çorum">Çorum</option>
+                                                            <option value="Denizli">Denizli</option>
+                                                            <option value="Diyarbakır">Diyarbakır</option>
+                                                            <option value="Düzce">Düzce</option>
+                                                            <option value="Edirne">Edirne</option>
+                                                            <option value="Elazığ">Elazığ</option>
+                                                            <option value="Erzincan">Erzincan</option>
+                                                            <option value="Erzurum">Erzurum</option>
+                                                            <option value="Eskişehir">Eskişehir</option>
+                                                            <option value="Gaziantep">Gaziantep</option>
+                                                            <option value="Giresun">Giresun</option>
+                                                            <option value="Gümüşhane">Gümüşhane</option>
+                                                            <option value="Hakkâri">Hakkâri</option>
+                                                            <option value="Hatay">Hatay</option>
+                                                            <option value="Iğdır">Iğdır</option>
+                                                            <option value="Isparta">Isparta</option>
+                                                            <option value="Kahramanmaraş">Kahramanmaraş</option>
+                                                            <option value="Karabük">Karabük</option>
+                                                            <option value="Karaman">Karaman</option>
+                                                            <option value="Kars">Kars</option>
+                                                            <option value="Kastamonu">Kastamonu</option>
+                                                            <option value="Kayseri">Kayseri</option>
+                                                            <option value="Kırıkkale">Kırıkkale</option>
+                                                            <option value="Kırklareli">Kırklareli</option>
+                                                            <option value="Kırşehir">Kırşehir</option>
+                                                            <option value="Kilis">Kilis</option>
+                                                            <option value="Kocaeli">Kocaeli</option>
+                                                            <option value="Konya">Konya</option>
+                                                            <option value="Kütahya">Kütahya</option>
+                                                            <option value="Malatya">Malatya</option>
+                                                            <option value="Manisa">Manisa</option>
+                                                            <option value="Mardin">Mardin</option>
+                                                            <option value="Mersin">Mersin</option>
+                                                            <option value="Muğla">Muğla</option>
+                                                            <option value="Muş">Muş</option>
+                                                            <option value="Nevşehir">Nevşehir</option>
+                                                            <option value="Niğde">Niğde</option>
+                                                            <option value="Ordu">Ordu</option>
+                                                            <option value="Osmaniye">Osmaniye</option>
+                                                            <option value="Rize">Rize</option>
+                                                            <option value="Sakarya">Sakarya</option>
+                                                            <option value="Samsun">Samsun</option>
+                                                            <option value="Siirt">Siirt</option>
+                                                            <option value="Sinop">Sinop</option>
+                                                            <option value="Sivas">Sivas</option>
+                                                            <option value="Şırnak">Şırnak</option>
+                                                            <option value="Tekirdağ">Tekirdağ</option>
+                                                            <option value="Tokat">Tokat</option>
+                                                            <option value="Trabzon">Trabzon</option>
+                                                            <option value="Tunceli">Tunceli</option>
+                                                            <option value="Şanlıurfa">Şanlıurfa</option>
+                                                            <option value="Uşak">Uşak</option>
+                                                            <option value="Van">Van</option>
+                                                            <option value="Yalova">Yalova</option>
+                                                            <option value="Yozgat">Yozgat</option>
+                                                            <option value="Zonguldak">Zonguldak</option>
+                                                        </select>
+                                                        </th>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Telefon</td>
+                                                        <th><input type="text" name="phone"
+                                                                   value="{{ app.user.phone }}"></th>
+
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+
+                                                <input type="hidden" name="token" value="{{ csrf_token('form-user') }}">
+
+                                                <button type="submit" class="btn btn-info">Güncelle</button>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="messages">
+                                <div class="panel-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped table-bordered table-hover">
+                                            <thead>
+                                            <tr>
+                                                <td>Ad Soyad</td>
+                                                <td>Adres</td>
+                                                <td>Şehir</td>
+                                                <td>Status</td>
+                                                <td>Detay</td>
+
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {% for order in orders %}
+                                            <tr>
+                                                <th>{{ order.name }}</th>
+
+                                                <th>{{ order.adress }}</th>
+
+                                                <th>{{ order.city }}</th>
+
+                                                <th>{{ order.status }}
+                                                    {% if order.status == 'New' %}
+                                                        <span style="color: blue">Sipariş Alındı</span>
+                                                    {% elseif order.status == 'Canceled' %}
+                                                        <span style="color: red">İptal Edildi</span>
+                                                    {% elseif order.status == 'Accepted' %}
+                                                        <span style="color: yellow">Onaylandı</span>
+                                                    {% else %}
+                                                        <span style="color: green">Tamamlandı</span>
+
+                                                    {% endif %}</th>
+                                                <th>
+                                                    <a href="{{ path('orders_show',{'id':order.id}) }}">Sipariş
+                                                        Detayı</a>
+                                                </th>
+                                            </tr>
+                                            </tbody>
+                                            {% endfor %}
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="settings">
+                                <h4>Yorumlarım </h4>
+
+                                {% for mycomment in mycomments %}
+                                    <div class="panel panel-default">
+                                        <div class="panel-body">
+                                            <ul class="media-list">
+                                                <li class="media">
+                                                    <a class="pull-left" href="#">
+                                                        <img class="media-object img-circle"
+                                                             src="{{ path('admin') }}/assets/img/user.png">
+                                                    </a>
+                                                    <div class="media-body">
+                                                        <span class="cart-amunt"><h4 class="media-heading">{{ mycomment.username }} kullanıcısı yorumu ;</h4></span>
+                                                        <p>    {{ mycomment.comment }}     </p>
+                                                    </div><span class="text-danger">{{ mycomment.productid }} Nolu ürüne yapıldı. Durumu:
+                                                        {% if mycomment.status == 'true' %}
+                                                            <span style="color: green">Onaylandı</span>
+                                                         {% else %}
+                                                             <span style="color: red">Onaylanmadı</span>
+                                                             {% endif %}
+                                                             </span>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block productwidget %} {{ include('home/_productwidget.html.twig') }} {% endblock %}

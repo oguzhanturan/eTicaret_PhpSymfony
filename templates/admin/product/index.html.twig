@@ -1,0 +1,66 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}product index{% endblock %}
+
+{% block content %}
+    <h1 class="page-subhead-line">
+        <a href="{{ path('admin_product_new') }}">
+            <button type="button" class="btn btn-success">Ekle</button>
+        </a></h1>
+
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Sprice</th>
+            <th>Image</th>
+            <th>Gallery</th>
+            <th>Status</th>
+            <th>actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.title }}</td>
+                <td>{{ product.sprice }}</td>
+                <td>{% if product.image == null %}
+                        <a class="btn btn-info "
+                           href=" javascript:openWin('{{ path('admin_product_iedit', {'id': product.id}) }}','','toolbar=no,scrollbars=no,resizable=no,top=200,left=500,width=400,height=180')">
+                            Resim Yükle
+                        </a>
+                    {% else %}
+                        <a href=" javascript:openWin('{{ path('admin_product_iedit', {'id': product.id}) }}','','toolbar=no,scrollbars=no,resizable=no,top=200,left=500,width=400,height=180')">
+                            <img src="{{ asset('admin/uploads') }}/images/{{ product.image }}" width="40"
+                                 height="40"></a>
+                    {% endif %}
+                </td>
+                <td><a class="btn btn-info "
+                       href=" javascript:openWin('{{ path('admin_image_new', {'pid': product.id}) }}','','toolbar=no,scrollbars=no,resizable=no,top=200,left=500,width=400,height=180')">Galeriye
+                        Ekle</a></td>
+                <td>{{ product.status }}</td>
+                <td>
+                    <div class="btn-group">
+                        <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle"><span
+                                    class="caret"></span></button>
+                        <ul class="dropdown-menu">
+
+                            <li><a href="{{ path('admin_product_show', {'id': product.id}) }}">Ürün Göster</a></li>
+                            <li><a href="{{ path('admin_product_edit', {'id': product.id}) }}">Düzenle</a></li>
+
+                        </ul>
+                    </div>
+
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="17">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,59 @@
+<div class="panel panel-info">
+    <div class="panel-heading">
+        Kategori Bilgileri
+
+    </div>
+    <div class="panel-body">
+        <form role="form" method="POST">
+
+            <div style="float: left ; width: 100%;">
+
+                <div class="form-group">
+                    <label>Enter Parent Category</label>
+                    <select name="category[parentid]"class="form-control">
+                        {% if category.parentid != 0 %}
+                        <option value="{{ category.parentid }}">{{ catname.title }}</option>
+                        {% else %}
+                        <option value="0">Ana Kategori</option>
+                        {% endif %}
+
+                        {% for cat in catlist  %}
+                        <option value="{{ cat.id }}">{{ cat.title }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Enter title</label>
+                    <input type="text" name="category[title]" class="form-control"  value="{{ category.title }}">
+                </div>
+                <div class="form-group">
+                    <label>Enter keywords</label>
+                    <input type="text" name="category[keywords]" class="form-control" value="{{ category.keywords }}">
+                </div>
+                <div class="form-group">
+                    <label>Enter description</label>
+                    <input type="text" name="category[description]" class="form-control" value="{{ category.description }}">
+                </div>
+                <div class="form-group">
+                    <label>Enter Status</label>
+                    <select name="category[status]"class="form-control">
+                        <option value="{{ category.status }}">{{ category.status }}</option>
+                        <option value="true">True</option>
+                        <option value="false">False</option>
+
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-info">Kaydet</button></a>
+                <td><a href="{{ path('admin_category_index') }}"><button class="btn btn-danger"><i class="glyphicon glyphicon-backward"></i>  Kategori Listesi</button></a></td>
+
+            </div>
+
+
+
+
+        </form>
+    </div>
+</div>
+
+

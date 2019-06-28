@@ -1,0 +1,10 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Edit category{% endblock %}
+
+{% block content %}
+
+    {{ include('admin/category/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('admin/category/_delete_form.html.twig') }}</tr>
+
+{% endblock %}

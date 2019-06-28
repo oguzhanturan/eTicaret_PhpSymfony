@@ -1,0 +1,59 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}category{% endblock %}
+
+{% block content %}
+    <div class="col-md-6">
+        <!--    Context Classes  -->
+        <div class="panel panel-default">
+
+            <div class="panel-heading">
+               Kategori Bilgileri
+            </div>
+
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table">
+
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ category.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Parent id</th>
+                            <td>{{ category.parentid }}</td>
+                        </tr>
+                        <tr>
+                            <th>Title</th>
+                            <td>{{ category.title }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Keywords</th>
+                            <td>{{ category.keywords }}</td>
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            <td>{{ category.description }}</td>
+                        </tr>
+
+                        <tr>
+                            <th>Status</th>
+                            <td>{{ category.status }}</td>
+                        </tr>
+                        <tr>
+                            <td><a href="{{ path('admin_category_index') }}"><button class="btn btn-danger"><i class="glyphicon glyphicon-home"></i>Üye Listesi</button></a></td>
+
+                            <td><a href="{{ path('admin_category_edit', {'id': category.id,'pid': category.parentid}) }}"><button class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i>Düzenle</button></a></td>
+
+                            <td>{{ include('admin/category/_delete_form.html.twig') }}</tr></td>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--  end  Context Classes  -->
+    </div>
+
+{% endblock %}

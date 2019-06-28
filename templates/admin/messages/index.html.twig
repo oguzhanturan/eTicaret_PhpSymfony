@@ -1,0 +1,68 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}messages index{% endblock %}
+
+{% block content %}
+    <h1 class="page-subhead-line"> Tüm Mesajlar </h1>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Message</th>
+                    <th>Status</th>
+                    <th>actions</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                {% for message in messages %}
+
+                    {% if message.status == 'true' %}
+                        <tr class="success">
+                            <td>{{ message.id }}</td>
+                            <td>{{ message.name }}</td>
+                            <td>{{ message.email }}</td>
+                            <td>{{ message.message }}</td>
+                            <td>{{ message.status }}</td>
+                            <td>
+                                <a href="{{ path('admin_messages_edit', {'id': message.id}) }}">Düzenle</a>
+                            </td>
+                        </tr>
+
+                    {% elseif message.status == 'new'  %}
+                        <tr class="info">
+                            <td>{{ message.id }}</td>
+                            <td>{{ message.name }}</td>
+                            <td>{{ message.email }}</td>
+                            <td>{{ message.message }}</td>
+                            <td>{{ message.status }}</td>
+                            <td>
+                                <a href="{{ path('admin_messages_edit', {'id': message.id}) }}">Düzenle</a>
+                            </td>
+                        </tr>
+                        {% else %}
+                            <tr class="danger">
+                                <td>{{ message.id }}</td>
+                                <td>{{ message.name }}</td>
+                                <td>{{ message.email }}</td>
+                                <td>{{ message.message }}</td>
+                                <td>{{ message.status }}</td>
+                                <td>
+                                    <a href="{{ path('admin_messages_edit', {'id': message.id}) }}">Düzenle</a>
+                                </td>
+                            </tr>
+                    {% endif %}
+
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <a href="{{ path('admin_messages_new') }}">Create new</a>
+{% endblock %}

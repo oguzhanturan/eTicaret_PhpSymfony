@@ -1,0 +1,31 @@
+<div style="float:left;width:20%;margin: 70px; position: absolute">
+    {% for cat in cats %}
+    {{ cat | raw }}
+    {% endfor %}
+</div>
+<div style="float:right;width:80%;">
+<div style="clear:both;"></div>
+<div class="slider-area">
+
+    <!-- Slider -->
+    <div class="block-slider block-slider4">
+        <ul class="" id="bxslider-home4">
+            {% for slideimg in slider %}
+            <li>
+                <img src="{{ asset('admin/uploads') }}/images/{{ slideimg.image }}" style="margin-left: 50px;margin-top:25px;width: 260px;height: 240px" alt="Slide">
+                <div class="caption-group">
+                    <h2 class="caption title">
+                         <span class="primary">{{ slideimg.title }}<strong></strong></span>
+                    </h2>
+                    <h4 class="caption subtitle">{{ slideimg.description }}</h4>
+                    <a class="caption button-radius" href="{{ path('products_detail', {'id' : slideimg.id}) }}"><span class="icon"></span>Şimdi Al</a>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <!-- ./Slider -->
+    <div style="height: 70px; float: left;"></div>
+
+</div> <!-- End slider area -->
+</div>

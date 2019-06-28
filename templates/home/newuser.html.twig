@@ -1,0 +1,78 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}Üye Ol{% endblock %}
+
+{% block content %}
+    <div class="product-big-title-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="product-bit-title text-center">
+                        <h2>Üye Ol</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="margin-top: 15px"></div>
+    <div class="zigzag-bottom"></div>
+    <div class="container">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="row">
+
+
+                <div class="woocommerce-info"><h1>Üye Ol</h1>
+                    {{ include('messages.html.twig') }}
+                    <div class="panel panel-danger">
+                        <div class="panel-heading">
+                            SINGUP FORM
+                        </div>
+                        <div class="panel-body">
+                            <form role="form" method="post" >
+
+                                <div class="form-group">
+                                    <label>Enter Email</label>
+                                    <input class="form-control" type="text" name="user[email]">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="hidden" name="user[roles]" value="ROLE_USER">
+                                </div>
+                                <div class="form-group">
+                                    <label>Password </label>
+                                    <input class="form-control" type="password" name="user[password]">
+                                </div>
+                                <div class="form-group">
+                                    <label>Name </label>
+                                    <input class="form-control" type="text" name="user[name]">
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" type="hidden" name="user[status]" value="true">
+                                </div>
+                                <div class="form-group">
+                                    <label>Adress </label>
+                                    <input class="form-control" type="text" name="user[adress]">
+                                </div>
+                                <div class="form-group">
+                                    <label>City </label>
+                                    <input class="form-control" type="text" name="user[city]">
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone </label>
+                                    <input class="form-control" type="text" name="user[phone]">
+                                </div>
+
+
+                                <button type="submit"  name="token" class="btn btn-danger" value="{{ csrf_token('form-newuser') }}">Giriş Yap</button>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+
+        </div>
+    </div>
+{% endblock %}
+        {% block productwidget %} {{ include('home/_productwidget.html.twig') }} {% endblock %}

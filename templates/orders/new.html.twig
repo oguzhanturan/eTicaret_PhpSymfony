@@ -1,0 +1,72 @@
+{% extends 'frontbase.html.twig' %}
+
+{% block title %}New Orders{% endblock %}
+
+{% block content %}
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="panel panel-info">
+
+
+                    <div class="panel-heading">
+                        Sipariş Ödeme
+                    </div>
+                    <div class="panel-body">
+                        <form role="form" action="{{ path('orders_new') }}" method="post" name="order">
+                            <h3>Alıcı Bilgileri</h3>
+                            <br>
+                            <div class="form-group">
+                                <label>Ödenecek Tutar : </label>
+                                <input class="form-control" type="text" name="orders[amount]" value="{{ total }}">
+                            </div>
+                            <div class="form-group">
+                                <label>Adı Soyadı</label>
+                                <input class="form-control" type="text" name="orders[name]" value="{{ app.user.name }}">
+                            </div>
+                            <div class="form-group">
+                                <label>Adresi</label>
+                                <input class="form-control" rows="3" type="text" name="orders[adress]"
+                                          value="{{ app.user.adress }}">
+                            </div>
+                            <div class="form-group">
+                                <label>Şehir</label>
+                                <input class="form-control" type="text" name="orders[city]" value="{{ app.user.city }}">
+                            </div>
+                            <div class="form-group">
+                                <label>Telefon</label>
+                                <input class="form-control" type="text" name="orders[phone]"
+                                       value="{{ app.user.phone }}">
+                            </div>
+                            <hr>
+                            <h3>Kart Bilgileri</h3>
+                            <br>
+                            <div class="form-group">
+                                <label>Kart Sahibi Adı Soyadı</label>
+                                <input class="form-control" type="text" name="kartname"
+                                       placeholder="Kart Sahibinin Adı Soyadı">
+                            </div>
+                            <div class="form-group">
+                                <label>Kart No</label>
+                                <input class="form-control" type="text" name="kartno" placeholder="Kart Numarası">
+                            </div>
+                            <div class="form-group">
+                                <label>Son Kullanma Tarihi</label>
+                                <input class="form-control" type="text" name="kartyil"
+                                       placeholder="Kart Son Kullanma Tarihi">
+                            </div>
+                            <div class="form-group">
+                                <label>CVC </label>
+                                <input class="form-control" type="text" name="kartcvc" placeholder="Kart CVC">
+                            </div>
+                            <button type="submit" class="btn btn-info">Ödeme Yap</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

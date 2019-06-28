@@ -1,0 +1,47 @@
+ <form action="" method="post">
+    <table class="table" class="table-hover">
+        <tbody>
+
+        <tr>
+            <th>Name</th>
+            <td><input  type="text" class="form-group" name="user[name]" value="{{ user.name }}"></td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td><input readonly type="text" class="form-group" name="user[email]" value="{{ user.email }}" ></td>
+        </tr>
+        <tr>
+            <th>Roles</th>
+            <td>
+            <select name="user[roles]">
+                <option value="{{ user.roles| join }}">{{ user.roles| join }}</option>
+                <option value="ROLE_ADMİN">ROLE_ADMİN</option>
+                <option value="ROLE_USER">ROLE_USER</option>
+            </select> </td>
+
+        </tr>
+        <tr>
+            <th>Status</th>
+            <td>
+            <select name="user[status]">
+                <option value="{{ user.status }}">{{ user.status }}</option>
+                <option value="true">true</option>
+                <option value="kick">kick</option>
+                <option value="new">new</option>
+            </select> </td>
+        </tr>
+
+        <tr>
+            <th>Password</th>
+            <td><input type="password" class="form-group" name="user[password]" value="{{ user.password}}" ></td>
+        </tr>
+        <tr>
+            <th>Adress</th>
+            <td><input type="text" class="form-group"  name="user[adress]" value="{{ user.adress }}"></td>
+        </tr>
+        <tr>
+            <th><input type="submit" value="Düzenle"></th>
+        </tr>
+        </tbody>
+    </table>
+    </form>
